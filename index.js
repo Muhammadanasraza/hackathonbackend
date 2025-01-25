@@ -2,7 +2,8 @@ import express from "express";
 import connectDB from "./Database/db.js";
 import dotenv from "dotenv";
 // import connectDB from "./database/db.js";
-import tasks from "./router/tasks.route.js";
+import beneficiary from "./routers/beneficiaries.route.js";
+import Users from "./routers/users.route.js"
 // import cors from "cors";
 // import cookieParser from "cookie-parser";
 
@@ -21,7 +22,9 @@ app.use(express.json());
 // app.use(cors());
 
 // API Routes
-app.use("/api/v1/tasks", tasks);
+// app.use("/api/v1/tasks", tasks);
+app.use('/api/beneficiaries', beneficiary);
+app.use('/api/users', Users);
 
 
 // Start the server

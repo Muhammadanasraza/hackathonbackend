@@ -1,0 +1,7 @@
+Beneficiary API POST >> http://localhost:4000/api/beneficiaries
+Beneficiary API GET BY CNIC >> http://localhost:4000/api/beneficiaries/CNIC
+
+
+Beneficiary API POST for res,staff >> http://localhost:4000/api/users
+Beneficiary API POST for res,staff >> http://localhost:4000/api/users/:id
+
