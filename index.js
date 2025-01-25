@@ -1,15 +1,16 @@
 import express from "express";
-// import dotenv from "dotenv";
+import connectDB from "./Database/db.js";
+import dotenv from "dotenv";
 // import connectDB from "./database/db.js";
-// import user from "./routers/user.route.js";
+import tasks from "./router/tasks.route.js";
 // import cors from "cors";
 // import cookieParser from "cookie-parser";
 
 // Load environment variables
-// dotenv.config({});
+dotenv.config({});
 
 // Connect to the database
-// connectDB();
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -20,7 +21,7 @@ app.use(express.json());
 // app.use(cors());
 
 // API Routes
-// app.use("/api/v1/user", user);
+app.use("/api/v1/tasks", tasks);
 
 
 // Start the server
