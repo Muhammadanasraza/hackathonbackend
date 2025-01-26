@@ -24,7 +24,7 @@ app.use(cors());
 app.use('/api/beneficiaries', beneficiary);
 app.use("/api/v1/user", user);
 
-
+// h
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server listening at port ${PORT}`);
