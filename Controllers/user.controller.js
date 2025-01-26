@@ -78,7 +78,7 @@ export const login = async (req, res) => {
     if (!user) {
       return res.status(400).json({
         success: false,
-        message: "Incorrect email.", // Incorrect email or password
+        message: "Incorrect email or password.", // Incorrect email or password
       });
     }
 
@@ -93,6 +93,10 @@ export const login = async (req, res) => {
       });
     }
 
+    // Update last login
+    user.lastLogin = new Date();
+    await user.save();
+
     // Generate token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
@@ -106,7 +110,7 @@ export const login = async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
       message: `Welcome back ${user.fullName || "User"}`,
       token,
@@ -170,9 +174,8 @@ export const getAllUsers = async (req, res) => {
     return res.status(200).json({ success: true, data: users });
   } catch (error) {
     console.error(error);
-    return res
-      .status(500)
-      .json({ success: false, message: "Failed to fetch users." });
+
+    return res.status(500).json({ success: false, message: "Failed to fetch users." });
   }
 };
 
