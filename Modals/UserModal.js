@@ -7,7 +7,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema(
   {
     fullName: {
-      type: String,
+      type: String, 
       required: true,
       trim: true,
     },
